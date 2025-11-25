@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lendgro Fact Find</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      :root {
+      --page-bg: #f6f8fb;
+      --card-bg: #ffffff;
+      --ink: #1f2933;
+      --muted: #51606f;
+      --primary: #2f4f9d;
+      --primary-strong: #24407f;
+      --border: #d6deeb;
+      --shadow: 0 8px 24px rgba(25, 51, 93, 0.08);
+    }
+    body {
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px;
+      line-height: 1.5;
+      background: var(--page-bg);
+      color: var(--ink);
+    }
+    h1, h2, h3, h4 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--primary-strong);
+    }
+    fieldset {
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+    }
+    legend {
+      font-weight: 700;
+      padding: 0 6px;
+      color: var(--primary);
+    }
+    label {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 10px;
+      box-sizing: border-box;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fdfefe;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(47, 79, 157, 0.15);
+    }
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+    .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 24px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px 24px;
+    }
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      border: none;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.15s ease;
+    }
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(25, 51, 93, 0.12);
+      filter: brightness(1.02);
+    }
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 16px rgba(25, 51, 93, 0.12);
+    }
+    .actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .property_block h3 {
+      font-size: 1.05rem;
+      color: var(--primary-strong);
+    }
+    .commitment_block h3 {
+      font-size: 1.05rem;
+      color: var(--primary-strong);
+    }
+    .applicant-card {
+      margin-bottom: 30px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 10px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);      
+    }
+    .property_block h3 {
+      font-size: 1.05rem;
+    }
+    .commitment_block h3 {
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Lendgro logo placeholder -->
+<img src="logo.png" alt="Lendgro logo" style="max-height:60px; margin-bottom:10px;">
+
+<h1>Lendgro Fact Find</h1>
+
+<p class="note">
+  Lendgro Ltd FRN 1042910 is an appointed representative of White Rose Finance Group Ltd FRN 630772 who are directly authorised and regulated by the Financial Conduct Authority.
+  Lendgro Ltd is a credit broker, not a lender. Please make borrowing decisions carefully, property or other assets offered as security may be at risk if you cannot keep up with repayments.
+</p>
+
+<form id="factFindForm">
+
+  <!-- SECTION A – ADVISER AND CASE DETAILS -->
+  <fieldset>
+    <legend>Section A – Adviser and case details</legend>
+
+    <div class="grid-3">
+      <div>
+        <label for="adviser_name">Adviser name</label>
+        <input type="text" id="adviser_name" name="adviser_name" placeholder="Type adviser name">
+      </div>
+
+      <div>
+        <label for="appointment_date">Date of appointment</label>
+        <input type="date" id="appointment_date" name="appointment_date">
+      </div>
+
+      <div>
+        <label for="case_type">Case type<span style="color:red;"> *</span></label>
+        <select id="case_type" name="case_type" required>
+          <option value="">Select case type</option>
+          <option>Purchase</option>
+          <option>Remortgage</option>
+          <option>Product transfer</option>
+          <option>Further advance</option>
+          <option>Buy to let purchase</option>
+          <option>Invoice finance</option>
+          <option>Buy to let remortgage</option>
+          <option>Commercial mortgage</option>
+          <option>Bridging finance</option>
+          <option>Cash merchants advance</option>
+          <option>Asset finance</option>
+          <option>Business funding</option>
+          <option>Trade finance</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:12px;">
+      <div>
+        <label for="advice_type">Advice type</label>
+        <select id="advice_type" name="advice_type">
+          <option value="">Select advice type</option>
+          <option>Advised</option>
+          <option>Execution only</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="referral_source">Referral source</label>
+        <select id="referral_source" name="referral_source" onchange="updateReferralOptions()">
+          <option value="">Select source</option>
+          <option value="Direct">Direct</option>
+          <option value="Introducer">Introducer</option>
+          <option value="Existing client">Existing client</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Referral source dynamic detail blocks -->
+    <div id="direct_options" style="display:none; margin-top:10px;">
+      <label for="direct_dropdown">Direct source</label>
+      <select id="direct_dropdown" name="direct_dropdown">
+        <option value="">Select direct channel</option>
+        <option>Facebook</option>
+        <option>Instagram</option>
+        <option>LinkedIn</option>
+        <option>Website</option>
+        <option>Email marketing</option>
+      </select>
+    </div>
+
+    <div id="existing_client_input" style="display:none; margin-top:10px;">
+      <label for="existing_client_text">Name of referring client</label>
+      <input type="text" id="existing_client_text" name="existing_client_text" placeholder="Type referrer name">
+    </div>
+
+    <div id="other_input" style="display:none; margin-top:10px;">
+      <label for="other_text">Other referral method</label>
+      <input type="text" id="other_text" name="other_text" placeholder="Type other method">
+    </div>
+
+  </fieldset>
+
+  <!-- SECTION B – APPLICANTS -->
+  <fieldset>
+    <legend>Section B – Applicants</legend>
+
+    <label for="num_applicants">Number of applicants<span style="color:red;"> *</span></label>
+    <select id="num_applicants" name="num_applicants" required>
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+
+    <div id="applicants_container" style="margin-top:20px;"></div>
+  </fieldset>
+
+  <!-- SECTION C – DEPENDANTS -->
+  <fieldset>
+    <legend>Section C – Dependants</legend>
+
+    <label for="num_dependants">Number of dependants</label>
+    <select id="num_dependants" name="num_dependants" onchange="renderDependants()">
+      <option value="0" selected>0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+
+    <div id="dependants_container" style="margin-top:15px;"></div>
+  </fieldset>
+
+  <!-- SECTION D – EMPLOYMENT AND INCOME (DYNAMIC PER APPLICANT) -->
+  <fieldset>
+    <legend>Section D – Employment and income</legend>
+  <p class="note">Employment and income is captured for every applicant you add above.</p>
+    
+  <div id="employment_container"></div>
+  </fieldset>
+
+  <!-- SECTION E – CURRENT PROPERTIES (MULTIPLE) -->
+  <fieldset id="section_current_properties">
+    <legend>Section E – Current properties</legend>
+
+    <p class="note">
+      Add all properties held by the applicants including current home, buy to let, business premises and property rented to family.
+    </p>
+
+    <button type="button" onclick="addPropertyBlock()" style="margin-bottom:15px;">
+      Add property
+    </button>
+
+    <div id="properties_container"></div>
+  </fieldset>
+
+  <!-- SECTION F – PRODUCT SPECIFIC DETAILS -->
+
+  <!-- F1: PROPERTY AND LOAN DETAILS (MORTGAGES AND STANDARD PROPERTY CASES) -->
+  <fieldset id="section_f_property" style="display:none;">
+    <legend>Section F – Property and loan details</legend>
+
+    <div class="grid-3">
+      <div>
+        <label for="case_purpose">Case purpose</label>
+        <select id="case_purpose" name="case_purpose">
+          <option value="">Select</option>
+          <option>Home purchase</option>
+          <option>Home remortgage</option>
+          <option>Debt consolidation</option>
+          <option>Capital raise</option>
+          <option>Buy to let</option>
+          <option>Let to buy</option>
+          <option>Further advance</option>
+          <option>Commercial property</option>
+        </select>
+      </div>
+      <div>
+        <label for="property_type">Property type</label>
+        <select id="property_type" name="property_type">
+          <option value="">Select</option>
+          <option>House</option>
+          <option>Flat</option>
+          <option>Maisonette</option>
+          <option>Bungalow</option>
+          <option>Commercial</option>
+          <option>Mixed use</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="tenure">Tenure</label>
+        <select id="tenure" name="tenure">
+          <option value="">Select</option>
+          <option>Freehold</option>
+          <option>Leasehold</option>
+          <option>Commonhold</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <h3 style="margin-top:15px;">Security property address</h3>
+    <p class="note">Connect the address search to Royal Mail AddressNow or your chosen address lookup.</p>
+
+    <label for="prop_address_search">Address search</label>
+    <input type="text" id="prop_address_search" name="prop_address_search" placeholder="Start typing post code or address">
+
+    <div class="grid-2" style="margin-top:10px;">
+      <div>
+        <label for="prop_address_line1">Address line 1</label>
+        <input type="text" id="prop_address_line1" name="prop_address_line1">
+      </div>
+      <div>
+        <label for="prop_address_line2">Address line 2</label>
+        <input type="text" id="prop_address_line2" name="prop_address_line2">
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:10px;">
+      <div>
+        <label for="prop_town">Town or city</label>
+        <input type="text" id="prop_town" name="prop_town">
+      </div>
+      <div>
+        <label for="prop_county">County</label>
+        <input type="text" id="prop_county" name="prop_county">
+      </div>
+      <div>
+        <label for="prop_postcode">Post code</label>
+        <input type="text" id="prop_postcode" name="prop_postcode">
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:15px;">
+      <div>
+        <label for="purchase_price">Purchase price or value</label>
+        <input type="number" id="purchase_price" name="purchase_price" step="0.01">
+      </div>
+      <div>
+        <label for="loan_amount">Loan amount required</label>
+        <input type="number" id="loan_amount" name="loan_amount" step="0.01">
+      </div>
+      <div>
+        <label for="loan_term">Loan term years</label>
+        <input type="number" id="loan_term" name="loan_term" min="1" max="40">
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:10px;">
+      <div>
+        <label for="repayment_type">Repayment type</label>
+        <select id="repayment_type" name="repayment_type">
+          <option value="">Select</option>
+          <option>Capital and interest</option>
+          <option>Interest only</option>
+          <option>Part and part</option>
+        </select>
+      </div>
+      <div>
+        <label for="io_repayment_strategy">If any interest only, what is the repayment strategy</label>
+        <input type="text" id="io_repayment_strategy" name="io_repayment_strategy">
+      </div>
+      <div>
+        <label for="deposit_source">Deposit source</label>
+        <input type="text" id="deposit_source" name="deposit_source" placeholder="Savings, gift, sale of property etc">
+      </div>
+    </div>
+
+  </fieldset>
+
+  <!-- F2: BRIDGING FINANCE DETAILS -->
+  <fieldset id="section_f_bridging" style="display:none;">
+    <legend>Section F – Bridging finance details</legend>
+
+    <h3>1. Case type and purpose</h3>
+
+    <label for="bridge_regulation">Is the bridge regulated or unregulated</label>
+    <select id="bridge_regulation" name="bridge_regulation">
+      <option value="">Select</option>
+      <option>Regulated</option>
+      <option>Unregulated</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_purpose">What is the purpose of the loan</label>
+    <select id="bridge_purpose" name="bridge_purpose">
+      <option value="">Select</option>
+      <option>Purchase</option>
+      <option>Refinance</option>
+      <option>Capital raise</option>
+      <option>Development or light refurb</option>
+      <option>Chain break</option>
+      <option>Other</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_has_exit">Is there an exit strategy</label>
+    <select id="bridge_has_exit" name="bridge_has_exit">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_exit_type">Exit type</label>
+    <select id="bridge_exit_type" name="bridge_exit_type">
+      <option value="">Select</option>
+      <option>Sale</option>
+      <option>Refinance</option>
+      <option>Other</option>
+    </select>
+
+    <h3 style="margin-top:20px;">2. Property details security</h3>
+
+    <label for="bridge_property_address">Full property address</label>
+    <textarea id="bridge_property_address" name="bridge_property_address" placeholder="Full address including post code"></textarea>
+
+    <label style="margin-top:12px;" for="bridge_property_type">Property type</label>
+    <select id="bridge_property_type" name="bridge_property_type">
+      <option value="">Select</option>
+      <option>House</option>
+      <option>Flat</option>
+      <option>Maisonette</option>
+      <option>Bungalow</option>
+      <option>Commercial</option>
+      <option>Mixed use</option>
+      <option>Land</option>
+      <option>Other</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_estimated_value">Estimated value</label>
+    <input type="number" id="bridge_estimated_value" name="bridge_estimated_value" step="0.01">
+
+    <label style="margin-top:12px;" for="bridge_purchase_price">Purchase price if applicable</label>
+    <input type="number" id="bridge_purchase_price" name="bridge_purchase_price" step="0.01">
+
+    <label style="margin-top:12px;" for="bridge_habitable">Is the property habitable</label>
+    <select id="bridge_habitable" name="bridge_habitable">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_planning">Is planning permission required or in place</label>
+    <select id="bridge_planning" name="bridge_planning">
+      <option value="">Select</option>
+      <option>Not required</option>
+      <option>Required and in place</option>
+      <option>Required and not in place</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_works_required">Are any works required</label>
+    <select id="bridge_works_required" name="bridge_works_required">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:8px;" for="bridge_works_details">If yes, please describe the works</label>
+    <textarea id="bridge_works_details" name="bridge_works_details"></textarea>
+
+    <label style="margin-top:12px;" for="bridge_tenure">Tenure</label>
+    <select id="bridge_tenure" name="bridge_tenure">
+      <option value="">Select</option>
+      <option>Freehold</option>
+      <option>Leasehold</option>
+      <option>Commonhold</option>
+      <option>Other</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_existing_debt">Is there any existing debt or charges on the property</label>
+    <select id="bridge_existing_debt" name="bridge_existing_debt">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:8px;" for="bridge_existing_debt_details">If yes, provide details</label>
+    <textarea id="bridge_existing_debt_details" name="bridge_existing_debt_details"></textarea>
+
+    <label style="margin-top:12px;" for="bridge_current_mortgage_balance">If refinance, what is the current mortgage balance</label>
+    <input type="number" id="bridge_current_mortgage_balance" name="bridge_current_mortgage_balance" step="0.01">
+
+    <h3 style="margin-top:20px;">3. Exit strategy</h3>
+
+    <label for="bridge_exit_breakdown">Full breakdown of exit</label>
+    <textarea id="bridge_exit_breakdown" name="bridge_exit_breakdown"></textarea>
+
+    <label style="margin-top:12px;" for="bridge_refinance_details">If refinance, lender details and expected product</label>
+    <textarea id="bridge_refinance_details" name="bridge_refinance_details"></textarea>
+
+    <label style="margin-top:12px;" for="bridge_has_aip">Has a mortgage broker provided an AIP</label>
+    <select id="bridge_has_aip" name="bridge_has_aip">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:12px;" for="bridge_expected_sale_price">If sale, expected sale price</label>
+    <input type="number" id="bridge_expected_sale_price" name="bridge_expected_sale_price" step="0.01">
+
+    <label style="margin-top:12px;" for="bridge_exit_timescale">Timescale for exit</label>
+    <input type="text" id="bridge_exit_timescale" name="bridge_exit_timescale" placeholder="For example 6 months">
+
+    <h3 style="margin-top:20px;">4. Security</h3>
+
+    <label for="bridge_security_offered">What security is offered</label>
+    <textarea id="bridge_security_offered" name="bridge_security_offered" placeholder="Detail all properties or assets offered as security"></textarea>
+
+  </fieldset>
+
+ <!-- F3: INVOICE FINANCE DETAILS -->
+  <fieldset id="section_f_invoice" style="display:none;">
+    <legend>Section F – Invoice finance details</legend>
+
+    <h3>1. Facility basics</h3>
+    <div class="grid-3">
+      <div>
+        <label for="inv_facility_type">Facility type</label>
+        <select id="inv_facility_type" name="inv_facility_type">
+          <option value="">Select</option>
+          <option>Confidential invoice discounting</option>
+          <option>Factoring</option>
+          <option>Selective invoice finance</option>
+          <option>Single invoice finance</option>
+          <option>Construction or stage payments</option>
+        </select>
+      </div>
+      <div>
+        <label for="inv_advance_rate">Advance rate required %</label>
+        <input type="number" id="inv_advance_rate" name="inv_advance_rate" step="0.1">
+      </div>
+      <div>
+        <label for="inv_turnover">Annual invoiced turnover</label>
+        <input type="number" id="inv_turnover" name="inv_turnover" step="0.01">
+      </div>
+    </div>
+
+    <h3 style="margin-top:15px;">2. Debtor profile</h3>
+    <div class="grid-3">
+      <div>
+        <label for="inv_top_debtors">Top 3 debtors and percentage of turnover</label>
+        <textarea id="inv_top_debtors" name="inv_top_debtors" placeholder="Customer A 35%, Customer B 20%..."></textarea>
+      </div>
+      <div>
+        <label for="inv_payment_terms">Typical payment terms</label>
+        <input type="text" id="inv_payment_terms" name="inv_payment_terms" placeholder="30 days, 60 days, etc">
+      </div>
+      <div>
+        <label for="inv_bad_debt">Any bad debt or late payment issues</label>
+        <select id="inv_bad_debt" name="inv_bad_debt">
+          <option value="">Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="inv_bad_debt_details" style="display:none; margin-top:10px;">
+      <label for="inv_bad_debt_notes">Please provide details</label>
+      <textarea id="inv_bad_debt_notes" name="inv_bad_debt_notes" placeholder="Amounts, dates, debtor names"></textarea>
+    </div>
+
+    <h3 style="margin-top:15px;">3. Operational details</h3>
+    <div class="grid-3">
+      <div>
+        <label for="inv_invoicing_frequency">Frequency of invoicing</label>
+        <input type="text" id="inv_invoicing_frequency" name="inv_invoicing_frequency" placeholder="Daily, weekly, monthly">
+      </div>
+      <div>
+        <label for="inv_industry">Industry</label>
+        <input type="text" id="inv_industry" name="inv_industry" placeholder="Construction, recruitment, wholesale, etc">
+      </div>
+      <div>
+        <label for="inv_existing_provider">Existing invoice finance provider</label>
+        <input type="text" id="inv_existing_provider" name="inv_existing_provider" placeholder="If applicable">
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:12px;">
+      <div>
+        <label for="inv_existing_facility_limit">Existing facility limit</label>
+        <input type="number" id="inv_existing_facility_limit" name="inv_existing_facility_limit" step="0.01">
+      </div>
+      <div>
+        <label for="inv_reason_for_change">Reason for new or replacement facility</label>
+        <textarea id="inv_reason_for_change" name="inv_reason_for_change"></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- F3: MERCHANT CASH ADVANCE DETAILS -->
+  <fieldset id="section_f_mca" style="display:none;">
+    <legend>Section F – Merchant cash advance details</legend>
+
+    <h3>1. Business seasonal profile</h3>
+
+    <label>Is the business seasonal</label>
+    <select name="mca_seasonal">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <h3 style="margin-top:20px;">2. Card payment details</h3>
+
+    <label>Which card terminal or payment provider do you use</label>
+    <input type="text" name="mca_payment_provider">
+
+    <label style="margin-top:12px;">How long have you been using this provider</label>
+    <input type="text" name="mca_provider_length">
+
+    <label style="margin-top:12px;">Average monthly card turnover over the last 6 months</label>
+    <input type="number" name="mca_avg_monthly_card" step="0.01">
+
+    <label style="margin-top:12px;">Total card turnover for each of the last 6 months</label>
+    <textarea name="mca_monthly_turnover" placeholder="Month 1 £..., Month 2 £..., etc"></textarea>
+
+    <label style="margin-top:12px;">What percentage of total revenue comes from card transactions</label>
+    <input type="number" name="mca_card_percentage" step="0.1">
+
+    <label style="margin-top:12px;">Do you also take cash or bank transfer payments</label>
+    <select name="mca_other_payment_methods">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label style="margin-top:12px;">Does the business have multiple merchant IDs</label>
+    <select name="mca_multiple_mids">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <h3 style="margin-top:20px;">3. Revenue and financial position</h3>
+
+    <label>Average total monthly revenue</label>
+    <input type="number" name="mca_avg_monthly_revenue" step="0.01">
+
+    <label style="margin-top:12px;">Any recent changes in income</label>
+    <textarea name="mca_income_changes"></textarea>
+
+    <label style="margin-top:12px;">Current monthly outgoings</label>
+    <input type="number" name="mca_monthly_outgoings" step="0.01">
+
+    <label style="margin-top:12px;">Any outstanding loans or advances</label>
+    <textarea name="mca_outstanding_loans"></textarea>
+
+    <label style="margin-top:12px;">Have you previously taken a merchant cash advance</label>
+    <select name="mca_previous" id="mca_previous">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <div id="mca_previous_fields" style="display:none; margin-top:15px; border-left:3px solid #ccc; padding-left:12px;">
+      <label>Who was the lender</label>
+      <input type="text" name="mca_prev_lender">
+
+      <label style="margin-top:12px;">Current outstanding balance</label>
+      <input type="number" name="mca_prev_balance" step="0.01">
+
+      <label style="margin-top:12px;">Daily repayment percentage</label>
+      <input type="number" name="mca_prev_daily_percent" step="0.1">
+
+      <label style="margin-top:12px;">Are you looking to refinance or top up</label>
+      <select name="mca_refinance">
+        <option value="">Select</option>
+        <option>Yes refinance</option>
+        <option>Top up</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <h3 style="margin-top:20px;">4. Purpose of funding</h3>
+
+    <label>Exact reason for the advance</label>
+    <textarea name="mca_reason"></textarea>
+
+    <label style="margin-top:12px;">Breakdown of how you plan to use the funds</label>
+    <textarea name="mca_breakdown"></textarea>
+
+    <label style="margin-top:12px;">When are the funds required</label>
+    <input type="text" name="mca_when_required" placeholder="For example immediately, 1 week, 1 month">
+
+    <label style="margin-top:12px;">What is the expected positive impact on the business</label>
+    <textarea name="mca_impact"></textarea>
+
+    <label style="margin-top:12px;">Are there any urgent liabilities that need to be cleared</label>
+    <textarea name="mca_liabilities"></textarea>
+
+  </fieldset>
+
+  <!-- F4: ASSET FINANCE DETAILS -->
+  <fieldset id="section_f_asset" style="display:none;">
+    <legend>Section F – Asset finance details</legend>
+
+    <h3>1. Case type</h3>
+
+    <label>Case type</label>
+    <select name="asset_case_type">
+      <option value="">Select</option>
+      <option>Hire purchase</option>
+      <option>Finance lease</option>
+      <option>Operating lease</option>
+      <option>Refinance of existing asset</option>
+      <option>Asset purchase from dealer or private sale</option>
+    </select>
+
+    <h3 style="margin-top:20px;">2. Asset details</h3>
+
+    <label>What asset is being financed</label>
+    <textarea name="asset_description" placeholder="Vehicle, machinery, equipment, technology, etc"></textarea>
+
+    <label style="margin-top:12px;">New or used</label>
+    <select name="asset_new_or_used">
+      <option value="">Select</option>
+      <option>New</option>
+      <option>Used</option>
+    </select>
+
+    <label style="margin-top:12px;">Supplier or dealer name</label>
+    <input type="text" name="asset_supplier_name">
+
+    <label style="margin-top:12px;">Asset value or purchase price</label>
+    <input type="number" name="asset_value" step="0.01">
+
+    <label style="margin-top:12px;">Is VAT included or excluded</label>
+    <select name="asset_vat_position">
+      <option value="">Select</option>
+      <option>VAT included</option>
+      <option>VAT excluded</option>
+    </select>
+
+    <label style="margin-top:12px;">Serial or chassis number if available</label>
+    <input type="text" name="asset_serial">
+
+    <label style="margin-top:12px;">What is the economic life of the asset</label>
+    <input type="text" name="asset_economic_life" placeholder="For example 5 years, 7 years">
+
+    <label style="margin-top:12px;">Any previous asset finance</label>
+    <select name="asset_previous_finance" id="asset_previous_finance">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <div id="asset_previous_finance_details" style="display:none; margin-top:10px;">
+      <label>Details of previous asset finance</label>
+      <textarea name="asset_previous_finance_text" placeholder="Lender, term, payment history, any issues"></textarea>
+    </div>
+
+    <h3 style="margin-top:20px;">3. Loan requirements</h3>
+
+    <label>Amount of deposit</label>
+    <input type="number" name="asset_deposit_amount" step="0.01">
+
+    <label style="margin-top:12px;">Monthly payment preference</label>
+    <input type="text" name="asset_monthly_preference" placeholder="Target monthly payment or maximum affordable amount">
+
+    <label style="margin-top:12px;">Length of term required</label>
+    <input type="text" name="asset_term" placeholder="For example 36 months, 5 years">
+
+    <label style="margin-top:12px;">Balloon payment required or preferred</label>
+    <select name="asset_balloon_required" id="asset_balloon_required">
+      <option value="">Select</option>
+      <option>Not required</option>
+      <option>Preferred</option>
+      <option>Required</option>
+    </select>
+
+    <div id="asset_balloon_details" style="display:none; margin-top:10px;">
+      <label>Balloon amount or percentage if known</label>
+      <input type="text" name="asset_balloon_amount" placeholder="For example 10 percent or £10,000">
+    </div>
+
+    <label style="margin-top:12px;">Is a personal guarantee available</label>
+    <select name="asset_pg_available">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Possibly</option>
+    </select>
+
+    <h3 style="margin-top:20px;">4. Purpose of the asset</h3>
+
+    <label>How will the asset be used</label>
+    <textarea name="asset_use" placeholder="Daily operations, project work, contracts, rentals etc"></textarea>
+
+    <label style="margin-top:12px;">Expected impact on revenue or operations</label>
+    <textarea name="asset_impact" placeholder="Extra revenue, cost savings, efficiency improvements"></textarea>
+
+    <label style="margin-top:12px;">Does the business depend on this asset</label>
+    <select name="asset_business_dependence" id="asset_business_dependence">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Partly</option>
+    </select>
+
+    <div id="asset_dependence_details" style="display:none; margin-top:10px;">
+      <label>Please explain how critical this asset is to the business</label>
+      <textarea name="asset_dependence_text"></textarea>
+    </div>
+
+  </fieldset>
+
+  <!-- F5: TRADE FINANCE DETAILS -->
+  <fieldset id="section_f_trade" style="display:none;">
+    <legend>Section F – Trade finance details</legend>
+
+    <h3>1. Type of trade finance</h3>
+
+    <label for="trade_type">Facility type</label>
+    <select id="trade_type" name="trade_type">
+      <option value="">Select</option>
+      <option>Import finance</option>
+      <option>Export finance</option>
+      <option>Stock or inventory finance</option>
+      <option>Invoice finance</option>
+      <option>Letter of credit</option>
+      <option>Bank guarantee</option>
+      <option>Other</option>
+    </select>
+
+    <h3 style="margin-top:20px;">2. Parties and goods</h3>
+
+    <div class="grid-2">
+      <div>
+        <label for="trade_buyer_name">Buyer name and country</label>
+        <input type="text" id="trade_buyer_name" name="trade_buyer_name" placeholder="Buyer name and country">
+      </div>
+      <div>
+        <label for="trade_supplier_name">Supplier name and country</label>
+        <input type="text" id="trade_supplier_name" name="trade_supplier_name" placeholder="Supplier name and country">
+      </div>
+    </div>
+
+    <label style="margin-top:12px;" for="trade_goods_description">Goods description</label>
+    <textarea id="trade_goods_description" name="trade_goods_description" placeholder="What is being imported or exported"></textarea>
+
+    <div class="grid-3" style="margin-top:12px;">
+      <div>
+        <label for="trade_currency">Currency</label>
+        <input type="text" id="trade_currency" name="trade_currency" placeholder="For example GBP, EUR, USD">
+      </div>
+      <div>
+        <label for="trade_invoice_value">Invoice value</label>
+        <input type="number" id="trade_invoice_value" name="trade_invoice_value" step="0.01">
+      </div>
+      <div>
+        <label for="trade_country_risk">Any high risk countries involved</label>
+        <input type="text" id="trade_country_risk" name="trade_country_risk" placeholder="If any high risk jurisdictions">
+      </div>
+    </div>
+
+    <h3 style="margin-top:20px;">3. Terms and facility requirements</h3>
+
+    <div class="grid-2">
+      <div>
+        <label for="trade_payment_terms">Payment terms</label>
+        <input type="text" id="trade_payment_terms" name="trade_payment_terms" placeholder="For example 30 days from shipment">
+      </div>
+      <div>
+        <label for="trade_incoterms">Incoterms if known</label>
+        <input type="text" id="trade_incoterms" name="trade_incoterms" placeholder="For example FOB, CIF, DAP">
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:12px;">
+      <div>
+        <label for="trade_facility_amount">Facility amount required</label>
+        <input type="number" id="trade_facility_amount" name="trade_facility_amount" step="0.01">
+      </div>
+      <div>
+        <label for="trade_facility_term">Facility term</label>
+        <input type="text" id="trade_facility_term" name="trade_facility_term" placeholder="For example revolving, 12 months">
+      </div>
+      <div>
+        <label for="trade_frequency">Frequency of shipments or invoices</label>
+        <input type="text" id="trade_frequency" name="trade_frequency" placeholder="One off, monthly, quarterly">
+      </div>
+    </div>
+
+    <h3 style="margin-top:20px;">4. Security and guarantees</h3>
+
+    <div class="grid-3">
+      <div>
+        <label for="trade_security_offered">Security offered</label>
+        <input type="text" id="trade_security_offered" name="trade_security_offered" placeholder="Stock, property, personal guarantees, debenture">
+      </div>
+      <div>
+        <label for="trade_pgs_available">Are personal guarantees available</label>
+        <select id="trade_pgs_available" name="trade_pgs_available">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Possibly</option>
+        </select>
+      </div>
+      <div>
+        <label for="trade_debenture_ok">Is a debenture over business assets acceptable</label>
+        <select id="trade_debenture_ok" name="trade_debenture_ok">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Possibly</option>
+        </select>
+      </div>
+    </div>
+
+    <h3 style="margin-top:20px;">5. Purpose and impact</h3>
+
+    <label for="trade_purpose">Purpose of the trade facility</label>
+    <textarea id="trade_purpose" name="trade_purpose" placeholder="Working capital for import or export, funding stock, smoothing cash flow etc"></textarea>
+
+    <label style="margin-top:12px;" for="trade_business_impact">Expected positive impact on the business</label>
+    <textarea id="trade_business_impact" name="trade_business_impact" placeholder="Revenue growth, margin improvement, ability to accept larger contracts etc"></textarea>
+
+  </fieldset>
+
+  <!-- F6: BUSINESS LOAN DETAILS -->
+  <fieldset id="section_f_business_loan" style="display:none;">
+    <legend>Section F – Business loan details</legend>
+
+    <h3>1. Loan type</h3>
+
+    <label>Are you looking for unsecured</label>
+    <select name="bl_unsecured">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Possibly</option>
+    </select>
+
+    <label style="margin-top:12px;">Are you looking for secured against property</label>
+    <select name="bl_secured_property">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Possibly</option>
+    </select>
+
+    <label style="margin-top:12px;">Are you open to a debenture or charge against business assets</label>
+    <select name="bl_debenture_assets">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Possibly</option>
+    </select>
+
+    <h3 style="margin-top:20px;">2. Loan requirements</h3>
+
+    <label>Amount required</label>
+    <input type="number" name="bl_amount_required" step="0.01">
+
+    <label style="margin-top:12px;">What is the purpose of the loan</label>
+    <textarea name="bl_purpose" placeholder="Working capital, expansion, refurbishment, refinance, tax, etc"></textarea>
+
+    <label style="margin-top:12px;">When are funds required</label>
+    <input type="text" name="bl_when_required" placeholder="Immediately, within 1 week, within 1 month, specific date">
+
+    <label style="margin-top:12px;">Preferred repayment term</label>
+    <input type="text" name="bl_term_preference" placeholder="For example 12 months, 3 years, 5 years">
+
+    <label style="margin-top:12px;">Preferred repayment structure</label>
+    <select name="bl_repayment_structure">
+      <option value="">Select</option>
+      <option>Monthly</option>
+      <option>Flexible</option>
+      <option>Interest only for period</option>
+    </select>
+
+    <label style="margin-top:12px;">Are PGs available</label>
+    <select name="bl_pgs_available">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+      <option>Possibly</option>
+    </select>
+
+  </fieldset>
+  
+  <!-- F7: ADDITIONAL CASE TYPES -->
+  <fieldset>
+    <legend>Section F – Additional case types (optional)</legend>
+    <p class="note">Capture extra case types without overwriting the main selection above.</p>
+    <div id="additional_case_types"></div>
+    <button type="button" onclick="addAdditionalCaseType()" style="margin-top:10px;">Add another case type</button>
+  </fieldset>
+  
+  <!-- SECTION G – EXPENDITURE AND CREDIT COMMITMENTS -->
+  <fieldset>
+    <legend>Section G – Expenditure and credit</legend>
+
+    <h3>Household expenditure</h3>
+
+    <div class="grid-3">
+      <div>
+        <label for="exp_council_tax">Council tax per month</label>
+        <input type="number" id="exp_council_tax" name="exp_council_tax" step="0.01">
+      </div>
+      <div>
+        <label for="exp_utilities">Utilities per month</label>
+        <input type="number" id="exp_utilities" name="exp_utilities" step="0.01">
+      </div>
+      <div>
+        <label for="exp_food_travel">Food and travel per month</label>
+        <input type="number" id="exp_food_travel" name="exp_food_travel" step="0.01">
+      </div>
+    </div>
+
+    <h3 style="margin-top:20px;">Credit commitments</h3>
+    <p class="note">Add all personal and business credit commitments that will remain or be repaid.</p>
+
+    <h4 style="margin-top:12px;">Adverse credit</h4>
+    <div class="grid-2" style="margin-bottom:10px;">
+      <div>
+        <label for="adverse_credit">Have you any adverse credit</label>
+        <select id="adverse_credit" name="adverse_credit" onchange="toggleAdverseCredit()">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <p class="note" style="margin:6px 0 0 0;">Select Yes to add adverse credit details directly below.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <div id="adverse_credit_details" style="display:none; margin-bottom:15px;">
+      <div>
+        <label for="adverse_type">Type of adverse credit</label>
+        <select id="adverse_type" name="adverse_type" onchange="toggleAdverseDetail()">
+          <option value="">Select</option>
+          <option>Late Payment</option>
+          <option>Default</option>
+          <option>CCJ</option>
+          <option>Bankruptcy</option>
+          <option>IVA</option>
+        </select>
+        <p class="note" style="margin:6px 0 0 0;">Choose a type to enter the amount, when it was, and whether it is settled.</p>
+      </div>
+
+      <div id="adverse_detail" style="display:none; margin-top:10px;">
+        <div class="grid-3">
+          <div>
+            <label for="adverse_amount">The amount</label>
+            <input type="number" id="adverse_amount" name="adverse_amount" step="0.01">
+          </div>
+          <div>
+            <label for="adverse_date">When it was</label>
+            <input type="date" id="adverse_date" name="adverse_date">
+          </div>
+          <div>
+            <label for="adverse_settled">Is it settled?</label>
+            <select id="adverse_settled" name="adverse_settled">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" onclick="addCommitmentBlock()" style="margin-bottom:15px;">
+      Add commitment
+    </button>
+
+    <div id="commitments_container"></div>
+
+  </fieldset>
+
+  <!-- SECTION H – PROTECTION AND INSURANCE -->
+  <fieldset>
+    <legend>Section H – Protection and insurance</legend>
+
+    <div class="grid-2">
+      <div>
+        <label>Life cover in place</label>
+        <select name="prot_life_cover">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div>
+        <label>Critical illness cover in place</label>
+        <select name="prot_ci_cover">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:10px;">
+      <div>
+        <label>Income protection in place</label>
+        <select name="prot_ip">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div>
+        <label>Buildings and contents cover in place</label>
+        <select name="prot_home">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+
+    <label style="margin-top:12px;">Client happy to discuss protection needs</label>
+    <select name="prot_discuss">
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+  </fieldset>
+
+  <!-- SECTION I – CONSENT AND DECLARATIONS -->
+  <fieldset>
+    <legend>Section I – Consent and declarations</legend>
+
+    <p>
+      <label>
+        <input type="checkbox" name="data_consent" value="yes">
+        I confirm that I have read and understood the privacy notice and consent to my data being used for the purposes of advice.
+      </label>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" name="credit_consent" value="yes">
+        I consent to Lendgro obtaining credit searches from credit reference agencies as required.
+      </label>
+    </p>
+
+  </fieldset>
+
+  <!-- SECTION J – CASE SUMMARY -->
+  <fieldset>
+    <legend>Section J – Case summary</legend>
+    <p class="note">
+      Click generate summary to build a short case summary that can be pasted into lender portals or internal notes.
+    </p>
+    <button type="button" onclick="generateSummary()" style="margin-bottom:10px;">Generate summary</button>
+    <textarea id="case_summary" name="case_summary" placeholder="Summary will appear here for you to copy and edit."></textarea>
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit">Save fact find</button>
+    <button type="button" onclick="window.print()">Print or save to PDF</button>
+    <button type="reset">Clear form</button>
+  </div>
+
+</form>
+
+<!-- SCRIPT BLOCKS -->
+<script>
+  // Helper for safe value access
+  function getValue(id) {
+    var el = document.getElementById(id);
+    return el && el.value ? el.value : "";
+  }
+
+  // Referral source dynamic behaviour
+  function updateReferralOptions() {
+    var source = document.getElementById("referral_source").value;
+
+    document.getElementById("direct_options").style.display = "none";
+    document.getElementById("existing_client_input").style.display = "none";
+    document.getElementById("other_input").style.display = "none";
+
+    if (source === "Direct") {
+      document.getElementById("direct_options").style.display = "block";
+    } else if (source === "Existing client") {
+      document.getElementById("existing_client_input").style.display = "block";
+    } else if (source === "Other") {
+      document.getElementById("other_input").style.display = "block";
+    }
+  }
+
+  function togglePreviousName(index) {
+    const block = document.getElementById(`a${index}_previous_name_block`);
+    const selected = Array.from(document.getElementsByName(`a${index}_name_changed`)).find((r) => r.checked);
+
+    if (!block || !selected) return;
+
+    block.style.display = selected.value === "Yes" ? "block" : "none"; 
+  }
+
+  const countries = [
+    "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria",
+    "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia",
+    "Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada",
+    "Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia",
+    "Cuba","Cyprus","Czech Republic","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
+    "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland",
+    "France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau",
+    "Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy",
+    "Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia",
+    "Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia",
+    "Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco",
+    "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand",
+    "Nicaragua","Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea",
+    "Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis",
+    "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal",
+    "Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
+    "South Korea","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan",
+    "Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
+    "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu",
+    "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+  ];
+
+  const benefitOptions = [
+    "Child Benefit","Universal Credit","Personal Independence Payment","Disability Living Allowance",
+    "Employment and Support Allowance","Pension Credit","Housing Benefit","Carer's Allowance",
+    "Attendance Allowance","State Pension","Other"
+  ];
+
+  function buildCountryOptions() {
+    return ['<option value="">Select</option>'].concat(countries.map((c) => `<option>${c}</option>`)).join("");
+  }
+
+    function toggleResidency(index) {
+    const nationality = document.getElementById(`a${index}_nationality`);
+    const block = document.getElementById(`a${index}_residency_block`);
+    if (!nationality || !block) return;
+  
+    const value = nationality.value || "";
+    const isBritish = value === "British" || value === "United Kingdom" || value.toLowerCase().includes("british");
+    block.style.display = value && !isBritish ? "block" : "none";
+    toggleResidencyNotes(index);
+  }
+
+  function toggleResidencyNotes(index) {
+    const selector = document.getElementById(`a${index}_residency_status`);
+    const notes = document.getElementById(`a${index}_residency_notes_block`);
+    if (!selector || !notes) return;
+    notes.style.display = selector.value === "No" ? "block" : "none";
+  }
+
+  function createApplicantCard(i) {
+    const block = document.createElement("div");
+    block.className = "applicant-card";
+
+    block.innerHTML = `
+      <h3>Applicant ${i} details</h3>
+
+      <div class="grid-3">
+        <div>
+          <label for="a${i}_title">Title</label>
+          <select id="a${i}_title" name="a${i}_title">
+            <option value="">Select</option>
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Miss</option>
+            <option>Ms</option>
+            <option>Dr</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="a${i}_first_name">First name</label>
+          <input type="text" id="a${i}_first_name" name="a${i}_first_name">
+        </div>
+        <div>
+          <label for="a${i}_surname">Surname</label>
+          <input type="text" id="a${i}_surname" name="a${i}_surname">
+        </div>
+      </div>
+
+           <div class="grid-3" style="margin-top:12px;">
+        <div>
+          <label for="a${i}_dob">Date of birth</label>
+          <input type="date" id="a${i}_dob" name="a${i}_dob">
+        </div>
+        <div>
+          <label for="a${i}_marital_status">Marital status</label>
+          <select id="a${i}_marital_status" name="a${i}_marital_status">
+            <option value="">Select</option>
+            <option>Single</option>
+            <option>Married</option>
+            <option>Civil partner</option>
+            <option>Separated</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+          </select>
+        </div>
+        <div>
+          <label for="a${i}_nationality">Nationality</label>
+          <select id="a${i}_nationality" name="a${i}_nationality">${buildCountryOptions()}</select>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:12px;">
+        <div>
+          <label for="a${i}_gender">Gender</label>
+          <select id="a${i}_gender" name="a${i}_gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div>
+          <label>Has your name changed in the last 3 years?</label>
+          <div style="display:flex; gap:12px; align-items:center; margin-top:6px;">
+            <label style="display:flex; gap:6px; align-items:center;">
+              <input type="radio" name="a${i}_name_changed" value="No" checked onchange="togglePreviousName(${i})">No
+            </label>
+            <label style="display:flex; gap:6px; align-items:center;">
+              <input type="radio" name="a${i}_name_changed" value="Yes" onchange="togglePreviousName(${i})">Yes
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="a${i}_previous_name_block" style="display:none; margin-top:10px;">
+        <div class="grid-2" style="margin-top:4px;">
+          <div>
+            <label for="a${i}_previous_first_name">Previous first name</label>
+            <input type="text" id="a${i}_previous_first_name" name="a${i}_previous_first_name">
+          </div>
+          <div>
+            <label for="a${i}_previous_surname">Previous surname</label>
+            <input type="text" id="a${i}_previous_surname" name="a${i}_previous_surname">
+          </div>
+        </div>
+      </div>
+
+      <div id="a${i}_residency_block" style="display:none; margin-top:10px;">
+        <label for="a${i}_residency_status">Do you have permanent rights to remain?</label>
+        <select id="a${i}_residency_status" name="a${i}_residency_status" onchange="toggleResidencyNotes(${i})">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <div id="a${i}_residency_notes_block" style="display:none; margin-top:8px;">
+          <label for="a${i}_residency_notes">Notes</label>
+          <textarea id="a${i}_residency_notes" name="a${i}_residency_notes" placeholder="Please provide details"></textarea>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:12px;">
+        <div>
+          <label for="a${i}_mobile">Mobile</label>
+          <input type="tel" id="a${i}_mobile" name="a${i}_mobile">
+        </div>
+        <div>
+          <label for="a${i}_email">Email</label>
+          <input type="email" id="a${i}_email" name="a${i}_email">
+        </div>
+      </div>
+
+      <h4 style="margin-top:20px;">Current address</h4>
+      <p class="note">Address search can be linked to Royal Mail lookup.</p>
+
+      <label for="a${i}_address_search">Address search</label>
+      <input type="text" id="a${i}_address_search" name="a${i}_address_search" placeholder="Start typing post code or address">
+
+      <div class="grid-2" style="margin-top:10px;">
+        <div>
+          <label for="a${i}_address_line1">Address line 1</label>
+          <input type="text" id="a${i}_address_line1" name="a${i}_address_line1">
+        </div>
+        <div>
+          <label for="a${i}_address_line2">Address line 2</label>
+          <input type="text" id="a${i}_address_line2" name="a${i}_address_line2">
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="a${i}_town">Town or city</label>
+          <input type="text" id="a${i}_town" name="a${i}_town">
+        </div>
+        <div>
+          <label for="a${i}_county">County</label>
+          <input type="text" id="a${i}_county" name="a${i}_county">
+        </div>
+        <div>
+          <label for="a${i}_postcode">Post code</label>
+          <input type="text" id="a${i}_postcode" name="a${i}_postcode">
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="a${i}_address_years">Time at address years</label>
+          <input class="address-duration" type="number" id="a${i}_address_years" name="a${i}_address_years" min="0">
+        </div>
+        <div>
+          <label for="a${i}_address_months">Time at address months</label>
+          <input class="address-duration" type="number" id="a${i}_address_months" name="a${i}_address_months" min="0" max="11">
+        </div>
+        <div>
+          <label for="a${i}_residential_status">Residential status</label>
+          <select id="a${i}_residential_status" name="a${i}_residential_status">
+            <option value="">Select</option>
+            <option>Owner</option>
+            <option>Private tenant</option>
+            <option>Living with family</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="a${i}_address_history_status" class="note" style="margin-top:4px;"></p>
+      <div id="a${i}_previous_addresses"></div>
+      <button type="button" id="a${i}_add_prev_address_btn" style="margin-top:10px; display:none;" onclick="addPreviousAddress(${i})">Add previous address</button>
+
+      <h4 style="margin-top:16px;">Identification</h4>
+      <div class="grid-2">
+        <div>
+          <label for="a${i}_id_verified">ID verified</label>
+          <select id="a${i}_id_verified" name="a${i}_id_verified">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div>
+          <label for="a${i}_address_verified">Address verified</label>
+          <select id="a${i}_address_verified" name="a${i}_address_verified">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+    `;
+
+    return block;
+  }
+
+  function addPreviousAddress(applicantIndex) {
+    const container = document.getElementById(`a${applicantIndex}_previous_addresses`);
+    if (!container) return;
+    const count = container.children.length + 1;
+
+    const wrapper = document.createElement("div");
+    wrapper.dataset.previousAddress = "true";
+    wrapper.style.marginTop = "12px";
+    wrapper.style.padding = "12px";
+    wrapper.style.border = "1px solid var(--border)";
+    wrapper.style.borderRadius = "8px";
+    wrapper.style.background = "#fdfefe";
+
+    wrapper.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <strong>Previous address ${count}</strong>
+        <button type="button" onclick="this.closest('div[data-previous-address]').remove(); ensureAddressHistorySufficiency(${applicantIndex});">Remove</button>
+      </div>
+      <div class="grid-2">
+        <div>
+          <label for="a${applicantIndex}_prev${count}_address_line1">Address line 1</label>
+          <input type="text" id="a${applicantIndex}_prev${count}_address_line1" name="a${applicantIndex}_prev${count}_address_line1">
+        </div>
+        <div>
+          <label for="a${applicantIndex}_prev${count}_address_line2">Address line 2</label>
+          <input type="text" id="a${applicantIndex}_prev${count}_address_line2" name="a${applicantIndex}_prev${count}_address_line2">
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="a${applicantIndex}_prev${count}_town">Town or city</label>
+          <input type="text" id="a${applicantIndex}_prev${count}_town" name="a${applicantIndex}_prev${count}_town">
+        </div>
+        <div>
+          <label for="a${applicantIndex}_prev${count}_county">County</label>
+          <input type="text" id="a${applicantIndex}_prev${count}_county" name="a${applicantIndex}_prev${count}_county">
+        </div>
+        <div>
+          <label for="a${applicantIndex}_prev${count}_postcode">Post code</label>
+          <input type="text" id="a${applicantIndex}_prev${count}_postcode" name="a${applicantIndex}_prev${count}_postcode">
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="a${applicantIndex}_prev${count}_years">Time at address years</label>
+          <input class="address-duration" type="number" id="a${applicantIndex}_prev${count}_years" name="a${applicantIndex}_prev${count}_years" min="0">
+        </div>
+        <div>
+          <label for="a${applicantIndex}_prev${count}_months">Time at address months</label>
+          <input class="address-duration" type="number" id="a${applicantIndex}_prev${count}_months" name="a${applicantIndex}_prev${count}_months" min="0" max="11">
+        </div>
+        <div></div>
+      </div>
+    `;
+
+    container.appendChild(wrapper);
+    ensureAddressHistorySufficiency(applicantIndex);
+  }
+
+  function monthsFromInputs(yearsId, monthsId) {
+    const years = parseInt(document.getElementById(yearsId)?.value || "0", 10);
+    const months = parseInt(document.getElementById(monthsId)?.value || "0", 10);
+    return (isNaN(years) ? 0 : years * 12) + (isNaN(months) ? 0 : months);
+  }
+
+  function ensureAddressHistorySufficiency(index) {
+    const totalCurrent = monthsFromInputs(`a${index}_address_years`, `a${index}_address_months`);
+    const prevContainer = document.getElementById(`a${index}_previous_addresses`);
+    let total = totalCurrent;
+    if (prevContainer) {
+      prevContainer.querySelectorAll('[data-previous-address="true"]').forEach((block) => {
+        const yearsInput = block.querySelector('input[id$="_years"]');
+        const monthsInput = block.querySelector('input[id$="_months"]');
+        const yearsId = yearsInput ? yearsInput.id : "";
+        const monthsId = monthsInput ? monthsInput.id : "";
+        if (yearsId && monthsId) {
+          total += monthsFromInputs(yearsId, monthsId);
+        }
+      });
+    }
+
+    const status = document.getElementById(`a${index}_address_history_status`);
+    if (status) {
+      const years = Math.floor(total / 12);
+      const months = total % 12;
+      status.textContent = `Total address history: ${years} years ${months} months (minimum 3 years).`;
+    }
+
+    const addBtn = document.getElementById(`a${index}_add_prev_address_btn`);
+    if (addBtn) {
+      addBtn.style.display = total < 36 ? "inline-flex" : "none";
+    }
+
+    if (total < 36 && prevContainer) {
+      if (prevContainer.children.length === 0) {
+        addPreviousAddress(index);
+      } else {
+        const last = prevContainer.lastElementChild;
+        const yearsFilled = last?.querySelector('input[id$="_years"]')?.value;
+        const monthsFilled = last?.querySelector('input[id$="_months"]')?.value;
+        if ((yearsFilled || monthsFilled) && prevContainer.children.length < 5) {
+          addPreviousAddress(index);
+        }
+      }
+    }
+  }
+
+  // Dynamic applicants
+  function renderApplicants() {
+    const container = document.getElementById("applicants_container");
+    const count = parseInt(document.getElementById("num_applicants").value);
+    const existing = Array.from(container.children);
+
+    if (existing.length > count) {
+      existing.slice(count).forEach((el) => el.remove());
+    }
+
+    for (let i = existing.length + 1; i <= count; i++) {
+      container.appendChild(createApplicantCard(i));
+    }
+
+    Array.from(container.children).forEach((block, idx) => {
+      const applicantNumber = idx + 1;
+      const heading = block.querySelector("h3");
+      if (heading) heading.textContent = `Applicant ${applicantNumber} details`;
+      togglePreviousName(applicantNumber);
+      toggleResidency(applicantNumber);
+      ensureAddressHistorySufficiency(applicantNumber);
+    });
+  }
+
+  function addOtherIncome(applicantIndex) {
+    const container = document.getElementById(`a${applicantIndex}_other_income_container`);
+    if (!container) return;
+    const count = container.children.length + 1;
+    const wrapper = document.createElement("div");
+    wrapper.className = "other-income-entry";
+    wrapper.style.marginTop = "8px";
+    wrapper.style.padding = "10px";
+    wrapper.style.border = "1px solid var(--border)";
+    wrapper.style.borderRadius = "8px";
+    wrapper.style.background = "#fdfefe";
+
+    wrapper.innerHTML = `
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div style="flex:1 1 240px;">
+          <label for="a${applicantIndex}_other_income_${count}">Income type</label>
+          <select id="a${applicantIndex}_other_income_${count}" name="a${applicantIndex}_other_income_${count}">
+            ${['<option value="">Select</option>'].concat(benefitOptions.map((b) => `<option>${b}</option>`)).join('')}
+          </select>
+        </div>
+        <div style="flex:1 1 160px;">
+          <label for="a${applicantIndex}_other_income_${count}_amount">Amount</label>
+          <input type="number" id="a${applicantIndex}_other_income_${count}_amount" name="a${applicantIndex}_other_income_${count}_amount" step="0.01">
+        </div>
+        <button type="button" onclick="this.closest('.other-income-entry').remove();">Remove</button>
+      </div>
+    `;
+
+    container.appendChild(wrapper);
+  }
+
+  function createEmploymentBlock(i) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "applicant-card";
+    wrapper.innerHTML = `
+      <h3>Applicant ${i} employment</h3>
+
+      <div class="grid-3">
+        <div>
+          <label for="a${i}_employment_status">Employment status</label>
+          <select id="a${i}_employment_status" name="a${i}_employment_status" onchange="toggleEmploymentDetails(${i})">
+            <option value="">Select</option>
+            <option>Employed</option>
+            <option>Self employed</option>
+            <option>Director</option>
+            <option>Contractor</option>
+            <option>Retired</option>
+            <option>Homemaker</option>
+            <option>Unemployed</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="a${i}_employer_name">Employer or business name</label>
+          <input type="text" id="a${i}_employer_name" name="a${i}_employer_name">
+        </div>
+        <div>
+          <label for="a${i}_job_title">Job title or role</label>
+          <input type="text" id="a${i}_job_title" name="a${i}_job_title">
+          <div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="a${i}_start_date">Start date</label>
+          <input type="date" id="a${i}_start_date" name="a${i}_start_date">
+        </div>
+        <div>
+          <label for="a${i}_basic_salary">Basic salary gross per year</label>
+          <input type="number" id="a${i}_basic_salary" name="a${i}_basic_salary" step="0.01">
+        </div>
+        <div>
+          <label for="a${i}_bonus">Bonus per year</label>
+          <input type="number" id="a${i}_bonus" name="a${i}_bonus" step="0.01">
+        </div>
+      </div>
+
+      <div class="grid-4" style="margin-top:10px; display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:14px 16px;">
+        <div>
+          <label for="a${i}_commission">Commission per year</label>
+          <input type="number" id="a${i}_commission" name="a${i}_commission" step="0.01">
+        </div>
+        <div>
+          <label for="a${i}_overtime">Overtime per year</label>
+          <input type="number" id="a${i}_overtime" name="a${i}_overtime" step="0.01">
+        </div>
+        <div>
+          <label for="a${i}_allowances">Allowances per year</label>
+          <input type="number" id="a${i}_allowances" name="a${i}_allowances" step="0.01">
+        </div>
+        <div>
+          <label for="a${i}_other_income">Other guaranteed income</label>
+          <input type="number" id="a${i}_other_income" name="a${i}_other_income" step="0.01">
+        </div>
+      </div>
+
+            <div id="a${i}_self_employed_fields" style="display:none; margin-top:15px; border-top:1px solid #ccc; padding-top:10px;">
+        <h4>Additional business information</h4>
+
+        <div class="grid-3">
+          <div>
+            <label for="a${i}_business_name">Registered business or Ltd company name</label>
+            <input type="text" id="a${i}_business_name" name="a${i}_business_name">
+          </div>
+            <label for="a${i}_company_number">Company number</label>
+            <input type="text" id="a${i}_company_number" name="a${i}_company_number" placeholder="For example 12345678">
+          </div>
+          <div>
+            <label for="a${i}_business_website">Business website</label>
+            <input type="text" id="a${i}_business_website" name="a${i}_business_website">
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:8px;">
+          You can search Companies House here:
+          <a href="https://find-and-update.company-information.service.gov.uk" target="_blank" rel="noreferrer">Companies House search</a>
+        </p>
+
+        <div class="grid-2" style="margin-top:10px;">
+          <div>
+            <label for="a${i}_turnover_recent">Most recent year turnover</label>
+            <input type="number" id="a${i}_turnover_recent" name="a${i}_turnover_recent" step="0.01">
+          </div>
+          <div>
+            <label for="a${i}_net_profit_recent">Most recent year net profit</label>
+            <input type="number" id="a${i}_net_profit_recent" name="a${i}_net_profit_recent" step="0.01">
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:10px;">
+          <div>
+            <label for="a${i}_turnover_prev">Previous year turnover</label>
+            <input type="number" id="a${i}_turnover_prev" name="a${i}_turnover_prev" step="0.01">
+          </div>
+          <div>
+            <label for="a${i}_net_profit_prev">Previous year net profit</label>
+            <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:10px;">
+          <div>
+            <label for="a${i}_dividends">Average dividends per year if taken</label>
+            <input type="number" id="a${i}_dividends" name="a${i}_dividends" step="0.01">
+          </div>
+          <div>
+            <label for="a${i}_retained_profit">Retained profit or reserves if known</label>
+            <input type="number" id="a${i}_retained_profit" name="a${i}_retained_profit" step="0.01">
+          </div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:16px;">Any other income</h4>
+      <div id="a${i}_other_income_container"></div>
+      <button type="button" onclick="addOtherIncome(${i})" style="margin-top:8px;">Add other income</button>
+    `;
+
+    return wrapper;
+  }
+
+  function renderEmploymentSections() {
+    const container = document.getElementById("employment_container");
+    const count = parseInt(document.getElementById("num_applicants").value);
+    const existing = Array.from(container.children);
+
+    if (existing.length > count) {
+      existing.slice(count).forEach((el) => el.remove());
+    }
+
+    for (let i = existing.length + 1; i <= count; i++) {
+      container.appendChild(createEmploymentBlock(i));
+    }
+
+    Array.from(container.children).forEach((block, idx) => {
+      const applicantNumber = idx + 1;
+      const heading = block.querySelector("h3");
+      if (heading) heading.textContent = `Applicant ${applicantNumber} employment`;
+      toggleEmploymentDetails(applicantNumber);
+    });
+  }
+  function toggleEmploymentDetails(index) {
+    const status = document.getElementById(`a${index}_employment_status`);
+    const block = document.getElementById(`a${index}_self_employed_fields`);
+    if (!block) return;
+    if (status && (status.value === "Self employed" || status.value === "Director")) {
+      block.style.display = "block";
+    } else {
+      block.style.display = "none";
+    }
+  }
+  
+  // Dependants
+  function renderDependants() {
+    const container = document.getElementById("dependants_container");
+    container.innerHTML = "";
+    const count = parseInt(document.getElementById("num_dependants").value);
+
+    for (let i = 1; i <= count; i++) {
+      let block = document.createElement("div");
+      block.style.marginBottom = "12px";
+
+      block.innerHTML = `
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+          <div>
+            <label>Dependant ${i} name</label>
+            <input type="text" name="dependant_${i}_name" placeholder="Name">
+          </div>
+          <div>
+            <label>Dependant ${i} age</label>
+            <input type="number" name="dependant_${i}_age" min="0" placeholder="Age">
+          </div>
+        </div>
+      `;
+      container.appendChild(block);
+    }
+  }
+
+  // Current properties
+  let propertyIndex = 0;
+
+  function addPropertyBlock() {
+    propertyIndex += 1;
+    const container = document.getElementById("properties_container");
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "property_block";
+    wrapper.style.border = "1px solid #ccc";
+    wrapper.style.padding = "15px";
+    wrapper.style.marginBottom = "15px";
+    wrapper.style.borderRadius = "6px";
+    wrapper.dataset.index = propertyIndex;
+
+    wrapper.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h3 style="margin:0;">Property ${propertyIndex}</h3>
+        <button type="button" onclick="removePropertyBlock(this)">Remove</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label for="cp_${propertyIndex}_label">Property reference or nickname</label>
+          <input type="text" id="cp_${propertyIndex}_label" name="cp_${propertyIndex}_label" placeholder="Home, Unit 3, Flat 2, etc">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_usage">Property use</label>
+          <select id="cp_${propertyIndex}_usage" name="cp_${propertyIndex}_usage">
+            <option value="">Select</option>
+            <option>Current home</option>
+            <option>Buy to let</option>
+            <option>Business premises</option>
+            <option>Rented to family</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cp_${propertyIndex}_rental_income_block" style="display:none; margin-top:10px;">
+        <label for="cp_${propertyIndex}_rental_income">Annual rental income</label>
+        <input type="number" id="cp_${propertyIndex}_rental_income" name="cp_${propertyIndex}_rental_income" step="0.01">
+      </div>
+
+      <h4 style="margin-top:15px;">Property classification</h4>
+
+      <div class="grid-3">
+        <div>
+          <label for="cp_${propertyIndex}_type">Type of property</label>
+          <select id="cp_${propertyIndex}_type" name="cp_${propertyIndex}_type">
+            <option value="">Select</option>
+            <option>Asset</option>
+            <option>Building</option>
+          </select>
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_res_com">Residential or commercial</label>
+          <select id="cp_${propertyIndex}_res_com" name="cp_${propertyIndex}_res_com">
+            <option value="">Select</option>
+            <option>Residential</option>
+            <option>Commercial</option>
+            <option>Mixed use</option>
+          </select>
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_tenure">Tenure</label>
+          <select id="cp_${propertyIndex}_tenure" name="cp_${propertyIndex}_tenure">
+            <option value="">Select</option>
+            <option>Freehold</option>
+            <option>Leasehold</option>
+            <option>Commonhold</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cp_${propertyIndex}_tenure_details" style="display:none; margin-top:10px;">
+        <div class="grid-2">
+          <div>
+            <label for="cp_${propertyIndex}_ground_rent">Ground rent per year</label>
+            <input type="number" id="cp_${propertyIndex}_ground_rent" name="cp_${propertyIndex}_ground_rent" step="0.01">
+          </div>
+          <div>
+            <label for="cp_${propertyIndex}_service_charge">Service charge per year</label>
+            <input type="number" id="cp_${propertyIndex}_service_charge" name="cp_${propertyIndex}_service_charge" step="0.01">
+          </div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:15px;">Address</h4>
+      <p class="note">You can connect this to Royal Mail address lookup.</p>
+
+      <label for="cp_${propertyIndex}_address_search">Address search</label>
+      <input type="text" id="cp_${propertyIndex}_address_search" name="cp_${propertyIndex}_address_search" placeholder="Start typing post code or address">
+
+      <div class="grid-2" style="margin-top:10px;">
+        <div>
+          <label for="cp_${propertyIndex}_address_line1">Address line 1</label>
+          <input type="text" id="cp_${propertyIndex}_address_line1" name="cp_${propertyIndex}_address_line1">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_address_line2">Address line 2</label>
+          <input type="text" id="cp_${propertyIndex}_address_line2" name="cp_${propertyIndex}_address_line2">
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="cp_${propertyIndex}_town">Town or city</label>
+          <input type="text" id="cp_${propertyIndex}_town" name="cp_${propertyIndex}_town">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_county">County</label>
+          <input type="text" id="cp_${propertyIndex}_county" name="cp_${propertyIndex}_county">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_postcode">Post code</label>
+          <input type="text" id="cp_${propertyIndex}_postcode" name="cp_${propertyIndex}_postcode">
+        </div>
+      </div>
+
+      <h4 style="margin-top:15px;">Finance details</h4>
+
+      <div class="grid-3">
+        <div>
+          <label for="cp_${propertyIndex}_lender">Current lender</label>
+          <input type="text" id="cp_${propertyIndex}_lender" name="cp_${propertyIndex}_lender">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_balance">Lending outstanding</label>
+          <input type="number" id="cp_${propertyIndex}_balance" name="cp_${propertyIndex}_balance" step="0.01" oninput="updateLtv(${propertyIndex})">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_payment">Current monthly payment</label>
+          <input type="number" id="cp_${propertyIndex}_payment" name="cp_${propertyIndex}_payment" step="0.01">
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="cp_${propertyIndex}_value">Current estimated value</label>
+          <input type="number" id="cp_${propertyIndex}_value" name="cp_${propertyIndex}_value" step="0.01" oninput="updateLtv(${propertyIndex})">
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_ltv">LTV percent</label>
+          <input type="text" id="cp_${propertyIndex}_ltv" name="cp_${propertyIndex}_ltv" readonly>
+        </div>
+        <div>
+          <label for="cp_${propertyIndex}_notes">Notes</label>
+          <input type="text" id="cp_${propertyIndex}_notes" name="cp_${propertyIndex}_notes" placeholder="Any extra comments">
+        </div>
+      </div>
+    `;
+   container.appendChild(wrapper);
+  attachPropertyListeners(wrapper, propertyIndex);
+  updatePropertyNumbers();
+  }
+
+  function removePropertyBlock(button) {
+    const wrapper = button.closest(".property_block");
+    if (wrapper) {
+      wrapper.remove();
+      updatePropertyNumbers();
+    }
+  }
+
+  function attachPropertyListeners(wrapper, index) {
+    const tenureSelect = wrapper.querySelector(`#cp_${index}_tenure`);
+    const usageSelect = wrapper.querySelector(`#cp_${index}_usage`);
+
+    if (tenureSelect) {
+      tenureSelect.addEventListener("change", () => togglePropertyTenure(index));
+      togglePropertyTenure(index);
+    }
+
+    if (usageSelect) {
+      usageSelect.addEventListener("change", () => togglePropertyUsage(index));
+      togglePropertyUsage(index);
+    }
+  }
+
+  function togglePropertyTenure(index) {
+    const tenureSelect = document.getElementById(`cp_${index}_tenure`);
+    const detailBlock = document.getElementById(`cp_${index}_tenure_details`);
+    if (!tenureSelect || !detailBlock) return;
+    const value = tenureSelect.value;
+    detailBlock.style.display = value === "Leasehold" || value === "Commonhold" ? "block" : "none";
+  }
+
+  function togglePropertyUsage(index) {
+    const usageSelect = document.getElementById(`cp_${index}_usage`);
+    const rentalBlock = document.getElementById(`cp_${index}_rental_income_block`);
+    if (!usageSelect || !rentalBlock) return;
+    const value = usageSelect.value;
+    rentalBlock.style.display = value === "Buy to let" || value === "Rented to family" ? "block" : "none";
+  }
+
+  function updatePropertyNumbers() {
+    const blocks = document.querySelectorAll(".property_block");
+    blocks.forEach((block, idx) => {
+      const heading = block.querySelector("h3");
+      if (heading) heading.textContent = `Property ${idx + 1}`;
+    });
+  }
+  
+  function updateLtv(index) {
+    const balanceInput = document.getElementById(`cp_${index}_balance`);
+    const valueInput = document.getElementById(`cp_${index}_value`);
+    const ltvInput = document.getElementById(`cp_${index}_ltv`);
+
+    if (!balanceInput || !valueInput || !ltvInput) return;
+
+    const balance = parseFloat(balanceInput.value) || 0;
+    const value = parseFloat(valueInput.value) || 0;
+
+    if (balance > 0 && value > 0) {
+      const ltv = (balance / value) * 100;
+      ltvInput.value = ltv.toFixed(1) + " percent";
+    } else {
+      ltvInput.value = "";
+    }
+  }
+
+  // Credit commitments
+
+  function addCommitmentBlock() {
+    commitmentIndex += 1;
+    const container = document.getElementById("commitments_container");
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "commitment_block";
+    wrapper.style.border = "1px solid #ccc";
+    wrapper.style.padding = "15px";
+    wrapper.style.marginBottom = "15px";
+    wrapper.style.borderRadius = "6px";
+    wrapper.dataset.index = commitmentIndex;
+
+    wrapper.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h3 style="margin:0;">Commitment ${commitmentIndex}</h3>
+        <button type="button" onclick="removeCommitmentBlock(this)">Remove</button>
+      </div>
+
+      <div class="grid-3">
+        <div>
+          <label for="cc_type_${commitmentIndex}">Type</label>
+          <select id="cc_type_${commitmentIndex}" name="cc_type_${commitmentIndex}" onchange="updateCommitmentType(${commitmentIndex})">
+            <option value="">Select</option>
+            <option>Loan</option>
+            <option>Credit card</option>
+            <option>HP</option>
+            <option>Bounce Back Loan / CBILS</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="cc_lender_${commitmentIndex}">Lender</label>
+          <input type="text" id="cc_lender_${commitmentIndex}" name="cc_lender_${commitmentIndex}">
+        </div>
+        <div>
+          <label for="cc_balance_${commitmentIndex}">Current balance</label>
+          <input type="number" id="cc_balance_${commitmentIndex}" name="cc_balance_${commitmentIndex}" step="0.01">
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:10px;">
+        <div>
+          <label for="cc_monthly_${commitmentIndex}">Monthly payment</label>
+          <input type="number" id="cc_monthly_${commitmentIndex}" name="cc_monthly_${commitmentIndex}" step="0.01">
+        </div>
+        <div>
+          <label for="cc_to_clear_${commitmentIndex}">To be cleared as part of this case</label>
+          <select id="cc_to_clear_${commitmentIndex}" name="cc_to_clear_${commitmentIndex}">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div>
+          <label for="cc_notes_${commitmentIndex}">Notes</label>
+          <input type="text" id="cc_notes_${commitmentIndex}" name="cc_notes_${commitmentIndex}" placeholder="Any extra comments">
+        </div>
+      </div>
+
+      <!-- Type specific extra fields -->
+      <div id="cc_extra_loan_${commitmentIndex}" style="display:none; margin-top:10px;">
+        <div class="grid-3">
+          <div>
+            <label for="cc_term_${commitmentIndex}">Term remaining months</label>
+            <input type="number" id="cc_term_${commitmentIndex}" name="cc_term_${commitmentIndex}">
+          </div>
+          <div>
+            <label for="cc_settlement_${commitmentIndex}">Settlement figure if known</label>
+            <input type="number" id="cc_settlement_${commitmentIndex}" name="cc_settlement_${commitmentIndex}" step="0.01">
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <div id="cc_extra_card_${commitmentIndex}" style="display:none; margin-top:10px;">
+        <div class="grid-3">
+          <div>
+            <label for="cc_limit_${commitmentIndex}">Credit limit</label>
+            <input type="number" id="cc_limit_${commitmentIndex}" name="cc_limit_${commitmentIndex}" step="0.01">
+          </div>
+          <div>
+            <label for="cc_minpay_${commitmentIndex}">Minimum payment</label>
+            <input type="number" id="cc_minpay_${commitmentIndex}" name="cc_minpay_${commitmentIndex}" step="0.01">
+          </div>
+          <div>
+            <label for="cc_zero_rate_${commitmentIndex}">On zero percent promotional rate</label>
+            <select id="cc_zero_rate_${commitmentIndex}" name="cc_zero_rate_${commitmentIndex}">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="cc_extra_hp_${commitmentIndex}" style="display:none; margin-top:10px;">
+        <div class="grid-3">
+          <div>
+            <label for="cc_hp_asset_${commitmentIndex}">Asset financed</label>
+            <input type="text" id="cc_hp_asset_${commitmentIndex}" name="cc_hp_asset_${commitmentIndex}" placeholder="Vehicle, equipment etc">
+          </div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div id="cc_extra_bbl_${commitmentIndex}" style="display:none; margin-top:10px;">
+        <div class="grid-3">
+          <div>
+            <label for="cc_original_${commitmentIndex}">Original amount</label>
+            <input type="number" id="cc_original_${commitmentIndex}" name="cc_original_${commitmentIndex}" step="0.01">
+          </div>
+          <div>
+            <label for="cc_start_date_${commitmentIndex}">Start date</label>
+            <input type="date" id="cc_start_date_${commitmentIndex}" name="cc_start_date_${commitmentIndex}">
+          </div>
+          <div></div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(wrapper);
+  }
+
+  function removeCommitmentBlock(button) {
+    const wrapper = button.closest(".commitment_block");
+    if (wrapper) {
+      wrapper.remove();
+    }
+  }
+
+  function updateCommitmentType(index) {
+    const typeEl = document.getElementById(`cc_type_${index}`);
+    if (!typeEl) return;
+
+    const type = typeEl.value;
+
+    const loanExtra = document.getElementById(`cc_extra_loan_${index}`);
+    const cardExtra = document.getElementById(`cc_extra_card_${index}`);
+    const hpExtra = document.getElementById(`cc_extra_hp_${index}`);
+    const bblExtra = document.getElementById(`cc_extra_bbl_${index}`);
+
+    if (loanExtra) loanExtra.style.display = "none";
+    if (cardExtra) cardExtra.style.display = "none";
+    if (hpExtra) hpExtra.style.display = "none";
+    if (bblExtra) bblExtra.style.display = "none";
+
+    if (type === "Loan") {
+      if (loanExtra) loanExtra.style.display = "block";
+    } else if (type === "Credit card") {
+      if (cardExtra) cardExtra.style.display = "block";
+    } else if (type === "HP") {
+      if (loanExtra) loanExtra.style.display = "block";
+      if (hpExtra) hpExtra.style.display = "block";
+    } else if (type === "Bounce Back Loan / CBILS") {
+      if (loanExtra) loanExtra.style.display = "block";
+      if (bblExtra) bblExtra.style.display = "block";
+    }
+  }
+
+  // Toggle Section F variants
+  function toggleSectionF() {
+    const selected = document.getElementById("case_type").value;
+
+    const propertySection = document.getElementById("section_f_property");
+    const mcaSection = document.getElementById("section_f_mca");
+    const bridgingSection = document.getElementById("section_f_bridging");
+    const invoiceSection = document.getElementById("section_f_invoice");
+    const assetSection = document.getElementById("section_f_asset");
+    const tradeSection = document.getElementById("section_f_trade");
+    const businessLoanSection = document.getElementById("section_f_business_loan");
+
+    const propertyCases = [
+      "Purchase",
+      "Remortgage",
+      "Product transfer",
+      "Further advance",
+      "Buy to let purchase",
+      "Buy to let remortgage",
+      "Commercial mortgage"
+    ];
+
+    if (propertySection) propertySection.style.display = "none";
+    if (mcaSection) mcaSection.style.display = "none";
+    if (bridgingSection) bridgingSection.style.display = "none";
+    if (invoiceSection) invoiceSection.style.display = "none";
+    if (assetSection) assetSection.style.display = "none";
+    if (tradeSection) tradeSection.style.display = "none";
+    if (businessLoanSection) businessLoanSection.style.display = "none";
+
+    if (selected === "Cash merchants advance") {
+      if (mcaSection) mcaSection.style.display = "block";
+    } else if (selected === "Bridging finance") {
+      if (bridgingSection) bridgingSection.style.display = "block";
+    } else if (selected === "Invoice finance") {
+      if (invoiceSection) invoiceSection.style.display = "block";
+    } else if (selected === "Asset finance") {
+      if (assetSection) assetSection.style.display = "block";
+    } else if (selected === "Trade finance") {
+      if (tradeSection) tradeSection.style.display = "block";
+    } else if (selected === "Business funding" || selected === "Business loan") {
+      if (businessLoanSection) businessLoanSection.style.display = "block";
+    } else if (propertyCases.includes(selected)) {
+      if (propertySection) propertySection.style.display = "block";
+    }
+  }
+
+    let additionalCaseTypeIndex = 0;
+  function addAdditionalCaseType() {
+    const container = document.getElementById("additional_case_types");
+    if (!container) return;
+    additionalCaseTypeIndex += 1;
+    const wrapper = document.createElement("div");
+    wrapper.className = "additional-case-wrapper";
+    wrapper.style.marginTop = "10px";
+    wrapper.style.padding = "10px";
+    wrapper.style.border = "1px solid var(--border)";
+    wrapper.style.borderRadius = "8px";
+    wrapper.style.background = "#fdfefe";
+
+    const options = [
+      "Purchase","Remortgage","Product transfer","Further advance","Buy to let purchase","Buy to let remortgage",
+      "Commercial mortgage","Bridging finance","Cash merchants advance","Asset finance","Business funding","Invoice finance",
+      "Trade finance"
+    ];
+
+    wrapper.innerHTML = `
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
+        <div style="flex:1 1 240px;">
+          <label for="additional_case_${additionalCaseTypeIndex}">Case type</label>
+          <select id="additional_case_${additionalCaseTypeIndex}" name="additional_case_${additionalCaseTypeIndex}">
+            ${['<option value="">Select case type</option>'].concat(options.map((o) => `<option>${o}</option>`)).join('')}
+          </select>
+        </div>
+        <div style="flex:1 1 320px;">
+          <label for="additional_case_${additionalCaseTypeIndex}_notes">Notes</label>
+          <textarea id="additional_case_${additionalCaseTypeIndex}_notes" name="additional_case_${additionalCaseTypeIndex}_notes" placeholder="Key details for this extra case type"></textarea>
+        </div>
+        <button type="button" onclick="this.closest('.additional-case-wrapper').remove();">Remove</button>
+      </div>
+    `;
+
+    container.appendChild(wrapper);
+  }
+
+  // Extra logic for asset finance and MCA previous advance
+  document.addEventListener("change", function(e) {
+    if (e.target.id === "asset_previous_finance") {
+      const details = document.getElementById("asset_previous_finance_details");
+      details.style.display = (e.target.value === "Yes") ? "block" : "none";
+    }
+
+    if (e.target.id === "asset_balloon_required") {
+      const block = document.getElementById("asset_balloon_details");
+      block.style.display = (e.target.value === "Preferred" || e.target.value === "Required") ? "block" : "none";
+    }
+
+    if (e.target.id === "asset_business_dependence") {
+      const block = document.getElementById("asset_dependence_details");
+      block.style.display = (e.target.value === "Yes" || e.target.value === "Partly") ? "block" : "none";
+    }
+
+    if (e.target.id === "mca_previous") {
+      const block = document.getElementById("mca_previous_fields");
+      block.style.display = (e.target.value === "Yes") ? "block" : "none";
+    }
+    
+    if (e.target.id === "inv_bad_debt") {
+      const block = document.getElementById("inv_bad_debt_details");
+      block.style.display = (e.target.value === "Yes") ? "block" : "none";
+    }
+  });
+  
+  // Generate simple case summary
+  function generateSummary() {
+    var lines = [];
+
+    var caseType = getValue("case_type");
+    var adviceType = getValue("advice_type");
+    var referralSource = getValue("referral_source");
+
+    lines.push("Case type: " + (caseType || "not set") + " | Advice type: " + (adviceType || "not set"));
+    if (referralSource) {
+      lines.push("Referral source: " + referralSource);
+    }
+
+    var numApps = parseInt(getValue("num_applicants")) || 0;
+    var applicantNames = [];
+    for (var i = 1; i <= numApps; i++) {
+      var first = getValue("a" + i + "_first_name");
+      var last = getValue("a" + i + "_surname");
+      if (first || last) {
+        applicantNames.push((first + " " + last).trim());
+      }
+    }
+    if (applicantNames.length > 0) {
+      lines.push("Applicants: " + applicantNames.join(", "));
+    }
+
+    // Simple product specific line
+    if (["Purchase", "Remortgage", "Product transfer", "Further advance", "Buy to let purchase", "Buy to let remortgage", "Commercial mortgage"].includes(caseType)) {
+      var purpose = getValue("case_purpose");
+      var loan = getValue("loan_amount");
+      var value = getValue("purchase_price");
+      var postcode = getValue("prop_postcode");
+      lines.push("Property case: " + (purpose || "") + " | Loan £" + (loan || "") + " on value £" + (value || "") + (postcode ? " | Post code " + postcode : ""));
+    } else if (caseType === "Bridging finance") {
+      var bpurpose = getValue("bridge_purpose");
+      var bexit = getValue("bridge_exit_type");
+      var btime = getValue("bridge_exit_timescale");
+      lines.push("Bridging case: Purpose " + (bpurpose || "") + " | Exit " + (bexit || "") + (btime ? " | Timescale " + btime : ""));
+    } else if (caseType === "Cash merchants advance") {
+      var mcaTurnover = document.getElementsByName("mca_avg_monthly_card")[0]?.value || "";
+      lines.push("Merchant cash advance: average monthly card turnover £" + (mcaTurnover || ""));
+    } else if (caseType === "Asset finance") {
+      var assetDesc = document.getElementsByName("asset_description")[0]?.value || "";
+      lines.push("Asset finance: " + (assetDesc || ""));
+    } else if (caseType === "Business funding" || caseType === "Business loan") {
+      var blPurpose = document.getElementsByName("bl_purpose")[0]?.value || "";
+      var blAmount = document.getElementsByName("bl_amount_required")[0]?.value || "";
+      lines.push("Business loan: £" + (blAmount || "") + " for " + (blPurpose || ""));
+    } else if (caseType === "Invoice finance") {
+      var invType = getValue("inv_facility_type");
+      var invTurnover = getValue("inv_turnover");
+      lines.push("Invoice finance: " + (invType || "") + (invTurnover ? " | Turnover £" + invTurnover : ""));
+    } else if (caseType === "Trade finance") {
+      var tType = getValue("trade_type");
+      var tPurpose = getValue("trade_purpose");
+      lines.push("Trade finance: " + (tType || "") + " – " + (tPurpose || ""));
+    }
+
+    document.getElementById("case_summary").value = lines.join("\n");
+  }
+
+  // Initial setup on load
+  document.addEventListener("DOMContentLoaded", function() {
+    renderApplicants();
+    renderEmploymentSections();
+    renderDependants();
+    addPropertyBlock();
+    addCommitmentBlock();
+    toggleSectionF();
+
+    document.getElementById("num_applicants").addEventListener("change", function() {
+      renderApplicants();
+      renderEmploymentSections();
+    });
+    document.getElementById("case_type").addEventListener("change", toggleSectionF);
+  });
+
+    document.addEventListener("input", function(e) {
+    if (e.target.classList.contains("address-duration")) {
+      const match = e.target.id.match(/^a(\d+)_/);
+      if (match) {
+        ensureAddressHistorySufficiency(parseInt(match[1], 10));
+      }
+    }
+  });
+
+  document.addEventListener("change", function(e) {
+    if (e.target.id && e.target.id.match(/^a\d+_nationality$/)) {
+      const match = e.target.id.match(/^a(\d+)_/);
+      if (match) toggleResidency(parseInt(match[1], 10));
+    }
+  });
+</script>
+
+<!-- Royal Mail AddressNow Capture placeholder
+<script src="https://addressnow.royalmail.com/js/addressnow-2.x.min.js"></script>
+<script>
+  var captureApplicant1 = new addressnow.Capture("YOUR_KEY_HERE", {
+    search: { element: "a1_address_search" },
+    format: {
+      line_1: "a1_address_line1",
+      line_2: "a1_address_line2",
+      town: "a1_town",
+      county: "a1_county",
+      postcode: "a1_postcode"
+    }
+  });
+</script>
+-->
+
+</body>
+</html>
