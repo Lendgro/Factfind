@@ -1656,9 +1656,10 @@
         <div>
           <label for="a${i}_job_title">Job title or role</label>
           <input type="text" id="a${i}_job_title" name="a${i}_job_title">
-          <div>
+          
+        </div>
+        
       </div>
-
       <div class="grid-3" style="margin-top:10px;">
         <div>
           <label for="a${i}_start_date">Start date</label>
@@ -1701,6 +1702,7 @@
             <label for="a${i}_business_name">Registered business or Ltd company name</label>
             <input type="text" id="a${i}_business_name" name="a${i}_business_name">
           </div>
+          <div>
             <label for="a${i}_company_number">Company number</label>
             <input type="text" id="a${i}_company_number" name="a${i}_company_number" placeholder="For example 12345678">
           </div>
@@ -1816,7 +1818,8 @@
 
   // Current properties
   let propertyIndex = 0;
-
+  let commitmentIndex = 0;
+  
   function addPropertyBlock() {
     propertyIndex += 1;
     const container = document.getElementById("properties_container");
