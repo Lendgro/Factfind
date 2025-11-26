@@ -1720,36 +1720,36 @@
           <a href="https://find-and-update.company-information.service.gov.uk" target="_blank" rel="noreferrer">Companies House search</a>
         </p>
 
-        <div class="grid-2" style="margin-top:10px;">
-          <div>
-            <label for="a${i}_turnover_recent">Most recent year turnover</label>
-            <input type="number" id="a${i}_turnover_recent" name="a${i}_turnover_recent" step="0.01">
+        <div class="grid-2" style="margin-top:10px; align-items:start;">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <h5 style="margin:0; color: var(--primary-strong);">Most recent year</h5>
+            <div>
+              <label for="a${i}_turnover_recent">Turnover</label>
+              <input type="number" id="a${i}_turnover_recent" name="a${i}_turnover_recent" step="0.01">
+            </div>
+            <div>
+              <label for="a${i}_net_profit_recent">Net profit</label>
+              <input type="number" id="a${i}_net_profit_recent" name="a${i}_net_profit_recent" step="0.01">
+            </div>
+            <div>
+              <label for="a${i}_dividends_recent">Dividends</label>
+              <input type="number" id="a${i}_dividends_recent" name="a${i}_dividends_recent" step="0.01">
+            </div>
           </div>
-          <div>
-            <label for="a${i}_net_profit_recent">Most recent year net profit</label>
-            <input type="number" id="a${i}_net_profit_recent" name="a${i}_net_profit_recent" step="0.01">
-          </div>
-        </div>
-
-        <div class="grid-2" style="margin-top:10px;">
-          <div>
-            <label for="a${i}_turnover_prev">Previous year turnover</label>
-            <input type="number" id="a${i}_turnover_prev" name="a${i}_turnover_prev" step="0.01">
-          </div>
-          <div>
-            <label for="a${i}_net_profit_prev">Previous year net profit</label>
-            <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
-          </div>
-        </div>
-
-        <div class="grid-2" style="margin-top:10px;">
-          <div>
-            <label for="a${i}_dividends">Average dividends per year if taken</label>
-            <input type="number" id="a${i}_dividends" name="a${i}_dividends" step="0.01">
-          </div>
-          <div>
-            <label for="a${i}_retained_profit">Retained profit or reserves if known</label>
-            <input type="number" id="a${i}_retained_profit" name="a${i}_retained_profit" step="0.01">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <h5 style="margin:0; color: var(--primary-strong);">Previous year</h5>
+            <div>
+              <label for="a${i}_turnover_prev">Turnover</label>
+              <input type="number" id="a${i}_turnover_prev" name="a${i}_turnover_prev" step="0.01">
+            </div>
+            <div>
+              <label for="a${i}_net_profit_prev">Net profit</label>
+              <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
+            </div>
+            <div>
+              <label for="a${i}_dividends_prev">Dividends</label>
+              <input type="number" id="a${i}_dividends_prev" name="a${i}_dividends_prev" step="0.01">
+            </div>
           </div>
         </div>
       </div>
