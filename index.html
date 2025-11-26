@@ -2151,13 +2151,25 @@
     `;
 
     container.appendChild(wrapper);
+    updateCommitmentNumbers();
   }
 
   function removeCommitmentBlock(button) {
     const wrapper = button.closest(".commitment_block");
     if (wrapper) {
       wrapper.remove();
+      updateCommitmentNumbers();      
     }
+  }
+
+    function updateCommitmentNumbers() {
+    const blocks = document.querySelectorAll(".commitment_block");
+    blocks.forEach((block, idx) => {
+      const heading = block.querySelector("h3");
+      if (heading) {
+        heading.textContent = `Commitment ${idx + 1}`;
+      }
+    });
   }
 
   function updateCommitmentType(index) {
