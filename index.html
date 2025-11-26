@@ -1092,7 +1092,7 @@
       </div>
     </div>
 
-    <button type="button" onclick="addCommitmentBlock()" style="margin-bottom:15px;">
+    <button type="button" id="add_commitment_button" style="margin-bottom:15px;">
       Add commitment
     </button>
 
@@ -2043,9 +2043,10 @@
   // Credit commitments
 
   function addCommitmentBlock() {
-    commitmentIndex += 1;
     const container = document.getElementById("commitments_container");
-
+    if (!container) return;
+    
+    commitmentIndex += 1;
     const wrapper = document.createElement("div");
     wrapper.className = "commitment_block";
     wrapper.style.border = "1px solid #ccc";
@@ -2384,6 +2385,11 @@
     addPropertyBlock();
     addCommitmentBlock();
     toggleSectionF();
+    
+    const addCommitmentButton = document.getElementById("add_commitment_button");
+    if (addCommitmentButton) {
+      addCommitmentButton.addEventListener("click", addCommitmentBlock);
+    }
 
     document.getElementById("num_applicants").addEventListener("change", function() {
       renderApplicants();
