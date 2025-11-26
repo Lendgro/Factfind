@@ -1697,73 +1697,74 @@
         </div>
       </div>
 
-            <div id="a${i}_self_employed_fields" style="display:none; margin-top:15px; border-top:1px solid #ccc; padding-top:10px;">
-        <h4>Additional business information</h4>
+          <div id="a${i}_self_employed_fields" style="display:none; margin-top:15px; border-top:1px solid #ccc; padding-top:10px;">
+            <h4>Additional business information</h4>
 
-        <div class="grid-3">
-          <div>
-            <label for="a${i}_business_name">Registered business or Ltd company name</label>
-            <input type="text" id="a${i}_business_name" name="a${i}_business_name">
-          </div>
-          <div>
-            <label for="a${i}_company_number">Company number</label>
-            <input type="text" id="a${i}_company_number" name="a${i}_company_number" placeholder="For example 12345678">
-          </div>
-          <div>
-            <label for="a${i}_business_website">Business website</label>
-            <input type="text" id="a${i}_business_website" name="a${i}_business_website">
-          </div>
-        </div>
-
-        <p class="note" style="margin-top:8px;">
-          You can search Companies House here:
-          <a href="https://find-and-update.company-information.service.gov.uk" target="_blank" rel="noreferrer">Companies House search</a>
-        </p>
-
-        <div class="grid-2" style="margin-top:10px; align-items:start;">
-            <div style="display:flex; flex-direction:column; gap:10px;">
-              <h5 style="margin:0; color: var(--primary-strong);">Most recent year</h5>
+            <div class="grid-3">
               <div>
-                <label for="a${i}_turnover_recent">Turnover</label>
-                <input type="number" id="a${i}_turnover_recent" name="a${i}_turnover_recent" step="0.01">
-              </div>
+                <label for="a${i}_business_name">Registered business or Ltd company name</label>
+                <input type="text" id="a${i}_business_name" name="a${i}_business_name">
             </div>
             <div>
-              <label for="a${i}_dividends_prev">Dividends</label>
-              <input type="number" id="a${i}_dividends_prev" name="a${i}_dividends_prev" step="0.01">
+                <label for="a${i}_company_number">Company number</label>
+                <input type="text" id="a${i}_company_number" name="a${i}_company_number" placeholder="For example 12345678">
             </div>
             <div>
-              <label for="a${i}_salary_prev">Salary</label>
-              <input type="number" id="a${i}_salary_prev" name="a${i}_salary_prev" step="0.01">
+                <label for="a${i}_business_website">Business website</label>
+                <input type="text" id="a${i}_business_website" name="a${i}_business_website">
+              </div>
             </div>
-            <div>
-              <label for="a${i}_net_profit_prev">Net profit</label>
-              <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
-                          <div style="display:flex; flex-direction:column; gap:10px;">
-              <h5 style="margin:0; color: var(--primary-strong);">Previous year</h5>
-              <div>
-                <label for="a${i}_turnover_prev">Turnover</label>
-                <input type="number" id="a${i}_turnover_prev" name="a${i}_turnover_prev" step="0.01">
+
+            <p class="note" style="margin-top:8px;">
+              You can search Companies House here:
+              <a href="https://find-and-update.company-information.service.gov.uk" target="_blank" rel="noreferrer">Companies House search</a>
+            </p>
+
+            <div class="grid-2" style="margin-top:10px; align-items:start;">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <h5 style="margin:0; color: var(--primary-strong);">Most recent year</h5>
+                <div>
+                  <label for="a${i}_turnover_recent">Turnover</label>
+                  <input type="number" id="a${i}_turnover_recent" name="a${i}_turnover_recent" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_net_profit_recent">Net profit</label>
+                  <input type="number" id="a${i}_net_profit_recent" name="a${i}_net_profit_recent" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_salary_recent">Salary</label>
+                  <input type="number" id="a${i}_salary_recent" name="a${i}_salary_recent" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_dividends_recent">Dividends</label>
+                  <input type="number" id="a${i}_dividends_recent" name="a${i}_dividends_recent" step="0.01">
+                </div>
               </div>
-              <div>
-                <label for="a${i}_net_profit_prev">Net profit</label>
-                <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
-              </div>
-              <div>
-                <label for="a${i}_salary_prev">Salary</label>
-                <input type="number" id="a${i}_salary_prev" name="a${i}_salary_prev" step="0.01">
-              </div>
-              <div>
-                <label for="a${i}_dividends_prev">Dividends</label>
-                <input type="number" id="a${i}_dividends_prev" name="a${i}_dividends_prev" step="0.01">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <h5 style="margin:0; color: var(--primary-strong);">Previous year</h5>
+                <div>
+                  <label for="a${i}_turnover_prev">Turnover</label>
+                  <input type="number" id="a${i}_turnover_prev" name="a${i}_turnover_prev" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_net_profit_prev">Net profit</label>
+                  <input type="number" id="a${i}_net_profit_prev" name="a${i}_net_profit_prev" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_salary_prev">Salary</label>
+                  <input type="number" id="a${i}_salary_prev" name="a${i}_salary_prev" step="0.01">
+                </div>
+                <div>
+                  <label for="a${i}_dividends_prev">Dividends</label>
+                  <input type="number" id="a${i}_dividends_prev" name="a${i}_dividends_prev" step="0.01">
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-      <h4 style="margin-top:16px;">Any other income</h4>
-      <div id="a${i}_other_income_container"></div>
-      <button type="button" onclick="addOtherIncome(${i})" style="margin-top:8px;">Add other income</button>
+            <h4 style="margin-top:16px;">Any other income</h4>
+            <div id="a${i}_other_income_container"></div>
+            <button type="button" onclick="addOtherIncome(${i})" style="margin-top:8px;">Add other income</button>
     `;
 
     return wrapper;
