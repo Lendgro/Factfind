@@ -1166,7 +1166,24 @@
     var el = document.getElementById(id);
     return el && el.value ? el.value : "";
   }
-  
+
+    function buildApplicantLabel(index) {
+    const first = getValue(`a${index}_first_name`);
+    const last = getValue(`a${index}_surname`);
+    const combined = `${first} ${last}`.trim();
+    return combined || `Applicant ${index}`;
+  }
+
+  function buildApplicantOptions() {
+    const count = parseInt(document.getElementById("num_applicants")?.value || "0", 10);
+    const options = ['<option value="">Select applicant</option>'];
+    for (let i = 1; i <= count; i++) {
+      const label = buildApplicantLabel(i);
+      options.push(`<option value="Applicant ${i}">${label}</option>`);
+    }
+    return options.join("");
+  }
+
   function toggleAdverseCredit() {
     const selector = document.getElementById("adverse_credit");
     const details = document.getElementById("adverse_credit_details");
@@ -1781,13 +1798,14 @@
     const container = document.getElementById("dependants_container");
     container.innerHTML = "";
     const count = parseInt(document.getElementById("num_dependants").value);
-
+    const applicantOptions = buildApplicantOptions();
+    
     for (let i = 1; i <= count; i++) {
       let block = document.createElement("div");
       block.style.marginBottom = "12px";
 
       block.innerHTML = `
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:15px;">
           <div>
             <label>Dependant ${i} name</label>
             <input type="text" name="dependant_${i}_name" placeholder="Name">
@@ -1795,6 +1813,12 @@
           <div>
             <label>Dependant ${i} age</label>
             <input type="number" name="dependant_${i}_age" min="0" placeholder="Age">
+          </div>
+          <div>
+            <label>Applicant responsible for dependant ${i}</label>
+            <select name="dependant_${i}_applicant">
+              ${applicantOptions}
+            </select>
           </div>
         </div>
       `;
@@ -2376,11 +2400,11 @@
   }
 
   // Initial setup on load
-  document.addEventListener("DOMContentLoaded", function() {
-    renderApplicants();
-    renderEmploymentSections();
-    renderDependants();
-    addPropertyBlock();
+    document.addEventListener("DOMContentLoaded", function() {
+      renderApplicants();
+      renderEmploymentSections();
+      renderDependants();
+      addPropertyBlock();
     addCommitmentBlock();
     toggleSectionF();
     
@@ -2392,6 +2416,7 @@
     document.getElementById("num_applicants").addEventListener("change", function() {
       renderApplicants();
       renderEmploymentSections();
+      renderDependants();
     });
     document.getElementById("case_type").addEventListener("change", toggleSectionF);
   });
