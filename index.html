@@ -1042,61 +1042,32 @@
     <h3 style="margin-top:20px;">Credit commitments</h3>
     <p class="note">Add all personal and business credit commitments that will remain or be repaid.</p>
 
-    <h4 style="margin-top:12px;">Adverse credit</h4>
-    <div class="grid-2" style="margin-bottom:10px;">
-      <div>
-        <label for="adverse_credit">Have you any adverse credit</label>
-        <select id="adverse_credit" name="adverse_credit" onchange="toggleAdverseCredit()">
-          <option value="">Select</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-        <p class="note" style="margin:6px 0 0 0;">Select Yes to add adverse credit details directly below.</p>
-      </div>
-      <div></div>
-    </div>
-
-    <div id="adverse_credit_details" style="display:none; margin-bottom:15px;">
-      <div>
-        <label for="adverse_type">Type of adverse credit</label>
-        <select id="adverse_type" name="adverse_type" onchange="toggleAdverseDetail()">
-          <option value="">Select</option>
-          <option>Late Payment</option>
-          <option>Default</option>
-          <option>CCJ</option>
-          <option>Bankruptcy</option>
-          <option>IVA</option>
-        </select>
-        <p class="note" style="margin:6px 0 0 0;">Choose a type to enter the amount, when it was, and whether it is settled.</p>
-      </div>
-
-      <div id="adverse_detail" style="display:none; margin-top:10px;">
-        <div class="grid-3">
-          <div>
-            <label for="adverse_amount">The amount</label>
-            <input type="number" id="adverse_amount" name="adverse_amount" step="0.01">
-          </div>
-          <div>
-            <label for="adverse_date">When it was</label>
-            <input type="date" id="adverse_date" name="adverse_date">
-          </div>
-          <div>
-            <label for="adverse_settled">Is it settled?</label>
-            <select id="adverse_settled" name="adverse_settled">
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <button type="button" id="add_commitment_button" style="margin-bottom:15px;">
       Add commitment
     </button>
 
     <div id="commitments_container"></div>
+
+    <div id="adverse_credit_section" style="margin-top:20px;">
+      <h3>Adverse credit</h3>
+      <div class="grid-2" style="margin-bottom:10px;">
+        <div>
+          <label for="adverse_credit">Have you any adverse credit</label>
+          <select id="adverse_credit" name="adverse_credit" onchange="toggleAdverseCredit()">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <p class="note" style="margin:6px 0 0 0;">Select Yes to add a note for the adviser.</p>
+        </div>
+        <div></div>
+      </div>
+
+      <div id="adverse_credit_details" style="display:none; margin-bottom:15px;">
+        <label for="adverse_credit_notes">Adverse credit notes</label>
+        <textarea id="adverse_credit_notes" name="adverse_credit_notes" placeholder="Include: which applicant, type of adverse credit, amount, when it occurred, whether it is settled, and settlement date if applicable."></textarea>
+      </div>
+    </div>
 
   </fieldset>
 
@@ -1194,6 +1165,21 @@
   function getValue(id) {
     var el = document.getElementById(id);
     return el && el.value ? el.value : "";
+  }
+  
+  function toggleAdverseCredit() {
+    const selector = document.getElementById("adverse_credit");
+    const details = document.getElementById("adverse_credit_details");
+    const notes = document.getElementById("adverse_credit_notes");
+
+    if (!selector || !details) return;
+
+    const show = selector.value === "Yes";
+    details.style.display = show ? "block" : "none";
+
+    if (!show && notes) {
+      notes.value = "";
+    }
   }
 
   // Referral source dynamic behaviour
